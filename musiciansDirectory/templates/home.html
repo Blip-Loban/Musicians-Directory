@@ -11,7 +11,7 @@
           <h5 class="card-title">{{album.album_name}}</h5>
           <p class="card-text">Release: {{album.release_date}}</p>
           <p>Rating: {{album.rating}}⭐ </p>
-          <p>Musician: {{album.musician.first_name}}</p>
+          <p>Musician: <a href="{% url 'edit_musician' album.musician.id %}">{{album.musician.first_name}}</a></p>
           <a href="{% url 'edit_album' album.id %}" class="btn btn-warning">Edit</a>
         </div>
       </div>
