@@ -22,3 +22,8 @@ def edit_album(request,id):
             return redirect('homepage')
     
     return render (request, 'add_album.html',{'forms':album_form})
+
+def delete_album(request,id):
+    album=Album.objects.get(pk=id)
+    album.delete()
+    return redirect('homepage')
