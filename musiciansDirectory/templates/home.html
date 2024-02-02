@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Directory</h1>
 <div class="d-flex flex-wrap m-4">
-{% for album in albums %}
+
 <table class="table">
   <thead>
     <tr>
@@ -19,9 +19,11 @@
     </tr>
   </thead>
   <tbody>
+    {% for album in object_list %}
+
     <tr>
       <th scope="row">{{album.musician.id}}</th>
-      <td>{{album.musician.first_name}}{{album.musician.last_name}}</td>
+      <td><a href="{% url 'edit_musician' album.id %}" class="text-decoration-none text-dark">{{album.musician.first_name}}{{album.musician.last_name}}</a></td>
       <td>{{album.musician.email}}</td>
       <td>{{album.rating}}</td>
       <td>{{album.musician.instrument_type}}</td>
@@ -30,13 +32,14 @@
       <td><a href="{% url 'edit_album' album.id %}" class="btn btn-warning">Edit</a>
         <a href="{% url 'delete_album' album.id %}" class="btn btn-danger">Delete</a>
       </td>
+      
     </tr>
+  {% endfor %}
    
   </tbody>
 </table>
 
 
 
-  {% endfor %}
 </div>
 {% endblock %}
